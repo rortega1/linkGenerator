@@ -1,0 +1,104 @@
+@charset "UTF-8";
+/* CSS Document */
+
+body {
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+}
+
+h3 {
+	background: #F9F9F9;
+	margin-left: -10px;
+	padding-left: 10px;
+	font: Verdana, Geneva, sans-serif;
+	font-size: 20px;
+}
+
+#mast{
+	position: relative;
+	max-width: 960px;
+	height: 110px;
+	margin: 0px auto;
+	background: url(images/VPlogo2.jpg);
+	padding: 0px;
+	border-bottom: thin solid #999;
+}
+
+#mast h1 {
+	margin-left: -9999999px;
+	padding: 5px 10px;
+	color: #fff;	
+}
+
+#content {
+	max-width: 960px;
+	height: 60px;
+	margin: 0px auto;
+}
+
+#formElement{
+	float: left;
+	min-width: 960px;
+	margin: 10px auto;
+	padding-top: 0px;
+	border-bottom: thin solid #999;
+	
+}
+
+#formElement form{
+	text-align: right;
+	margin-top: 0px;
+	padding: 5px 0 0 10px;	
+}
+
+#formElement form select {
+	width: 200px;
+}
+
+#searchreturn {
+	max-width: 960px;
+	line-height: 1em;
+	margin: 30px auto;		
+}
+#results {
+	max-width: 960px;
+	margin: 10px auto;
+	font: Verdana, Geneva, sans-serif;
+	font-size: 14px;
+}
+
+#results .mp4 {
+	padding: 0 0 0 10px;
+
+}
+
+#results .mp3 {
+	padding: 0 0 0 10px;
+
+}
+
+#results .flv {
+	padding: 0 0 0 10px;
+
+}
+
+#results .other {
+	padding: 0 0 0 10px;
+
+}
+
+#results ul {
+	list-style: none;
+	
+}
+
+#results li {
+	list-style: none;
+	line-height: 1.6em;
+}
+
+.return {
+	position: relative;
+	padding-top: 20px;
+	padding-left: 10px;	
+}
