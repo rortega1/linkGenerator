@@ -5,12 +5,17 @@ class videoList extends DirectoryIterator
 	// Protect the array list from being changed publicly
 	protected $files = array();
 	
-	// Construct that iterates through file level directory and stores list into protected array
-	public function __construct()
+	// Directory var to dynamically iterate through directories
+	private $directory;
+	
+	// Construct that iterates through passed in directory and stores list into protected array
+	public function __construct($directory)
 	{
+		// Set directory before using
+		$this->setDirectory($directory);
 		
-		// Call the DirectoryIterator Class
-		$iterator = new DirectoryIterator(dirname(__FILE__));
+		// Call the DirectoryIterator Class passing class var directory
+		$iterator = new DirectoryIterator($this->directory);
 		
 		// Pass DirectoryIterator objects into working variable $fileinfo
 		foreach($iterator as $fileinfo)
@@ -29,13 +34,25 @@ class videoList extends DirectoryIterator
 	{
 		return $this->files;
 	}
+	
+	// Publicly set directory to iterate through
+	private function setDirectory($directory)
+	{
+		if($directory == NULL)
+		{
+			$this->directory = dirname(__FILE__);
+		}else
+		{
+			$this->directory = $directory;
+		}
+	}
 
 
 }
 
 
 // Test class and method
-$f = new VideoList();
+$f = new VideoList("../");
 foreach($f->getFiles() as $x)
 {
 	echo $x . "<br>";
