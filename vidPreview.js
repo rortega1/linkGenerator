@@ -8,6 +8,7 @@ This notice must stay intact
 /*
 Modified for Valencia College use by Rey Ortega
 Allows user to preview video link prior to clicking and entering the new web address.
+
 */
 if (document.getElementById || document.all){
 document.write('<div id="trailimageid">');
