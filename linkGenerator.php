@@ -1,3 +1,15 @@
+<?php
+	/*
+		Disclaimer:
+		This file was created in early 2008 using procedural code by Rey Ortega at Valencia College.
+		I'm currently working at refactoring this to an object oriented version with a lot less, cleaner
+		code.
+		
+		This is really difficult to read and wouldn't recommend using most of this.
+	*/
+
+?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -25,7 +37,7 @@ function gourl() {
             <td>Application:</td><td><select name="appl">
 			<?php if(!$ap = @$_GET['appl']) {?>
             <option value=""></option><?php  
-				$odir = opendir('D:/applications/');
+				$odir = opendir('Main Directory Here');
 				if(!$odir) {
 					echo "Not a Valid Directory!";
 				}else{
@@ -37,7 +49,7 @@ function gourl() {
 					}
 				}
 			} else { 
-				$handle = @opendir('D:/applications/' . $_GET['appl']);
+				$handle = @opendir('Main Directory Here' . $_GET['appl']);
 				if(!$handle) {?>
 					<option value = "" selected="selected">Not a Valid Directory!</option> <?php
 				}else{?>
@@ -54,7 +66,7 @@ function gourl() {
         <tr>
             <td>Instance:</td>
             <td><select name="inst"><?php
-			$idir = @opendir('D:/applications/' . $_GET['appl'] . '/streams/');
+			$idir = @opendir('Main Directory Here' . $_GET['appl'] . 'Required standard directory here');
 			if(!$idir) {
 				echo "Not a Valid Directory!";
 			}else {
@@ -86,7 +98,7 @@ if($_SERVER['REQUEST_METHOD'] == "GET") {
 	if(!$appl || !$inst) {
 		//echo "Error... Please fill out form Correctly!";	
 	}else{
-		$dir = 'D:/applications/' . $appl . '/streams/' . $inst . '/';
+		$dir = 'Main Directory Here' . $appl . 'Required standard directory here' . $inst . '/';
 		showdir($dir, $appl, $inst, $url);
 	}
 }
@@ -94,10 +106,10 @@ if($_SERVER['REQUEST_METHOD'] == "GET") {
 <?php
 function search($r) {
 	if($r == false) {
-		?><script> var l = document.getElementById('searchreturn'); l.innerHTML='<div class = "return"><?php echo "No Files Found.  Return to ";?><b><a href="http://websflash.valenciacollege.edu/privateApps/linkGenerator.php" style="text-decoration: none;" target = "_self">Search</a></b><?php echo ".";?> </div>';</script><?php
+		?><script> var l = document.getElementById('searchreturn'); l.innerHTML='<div class = "return"><?php echo "No Files Found.  Return to ";?><b><a href="File URL Location Here" style="text-decoration: none;" target = "_self">Search</a></b><?php echo ".";?> </div>';</script><?php
 		
 	}else if($r == true) {
-		?><script> var l = document.getElementById('searchreturn'); l.innerHTML='<div class ="return"><?php	echo "Return to ";?><b><a href="http://websflash.valenciacollege.edu/privateApps/linkGenerator.php" style="text-decoration: none; padding-top: 20px;" target = "_self">Search</a></b><?php echo ".";?> </div>';</script> <?php
+		?><script> var l = document.getElementById('searchreturn'); l.innerHTML='<div class ="return"><?php	echo "Return to ";?><b><a href="File URL Location Here" style="text-decoration: none; padding-top: 20px;" target = "_self">Search</a></b><?php echo ".";?> </div>';</script> <?php
 	}
 }
 	function showdir($dir, $appl, $inst, $url) {
@@ -114,7 +126,11 @@ function search($r) {
 			
 //asort($file, SORT_NUMERIC); - doesnt work :(
 
-// hides folders, writes out ul of images and thumbnails from two folders			
+// hides folders, writes out ul of images and thumbnails from two folders
+/*
+	This could have been done with a lot less code.  I was still learning PHP when I wrote this and took
+	an approach that was much more difficult.
+*/			
     				if ($file != "." && $file != ".." && $file != "index.php" && $file != "Thumbnails" && !strstr($file, "._") && !strstr($file, ".DS_Store") && !strstr($file, ".flv") && !strstr($file, ".mov") && !strstr($file, ".mp3")) {
    					$mp4_array[] = "<li><a href=\"http://{$url}/videoPlayer.html?appl={$appl}&inst={$inst}&vid=mp4:{$newstring}\">http://{$url}/videoPlayer.html?appl={$appl}&inst={$inst}&vid=mp4:{$newstring}</a></li>\n";
 				 }else if ($file != "." && $file != ".." && $file != "index.php" && $file != "Thumbnails" && !strstr($file, "._") && !strstr($file, ".DS_Store") && !strstr($file, ".mp4") && !strstr($file, ".mov") && !strstr($file, ".mp3")) {
