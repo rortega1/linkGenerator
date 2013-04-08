@@ -1,6 +1,20 @@
 <?php
+/*
+	FileList class takes a directory as input and returns an array of files within the directory.
+	Input of NULL will return the list of files in the directory of the current file using the public
+	method getFiles().
+	
+	Example:
+		
+		$files = new FileList();
+		foreach($files->getFiles() as $file)
+		{
+			echo $file;
+		}
+*/
 
-class videoList extends DirectoryIterator
+
+class FileList extends DirectoryIterator
 {
 	// Protect the array list from being changed publicly
 	protected $files = array();
@@ -47,13 +61,4 @@ class videoList extends DirectoryIterator
 		}
 	}
 
-
-}
-
-
-// Test class and method
-$f = new VideoList("../");
-foreach($f->getFiles() as $x)
-{
-	echo $x . "<br>";
 }
